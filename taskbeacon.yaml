@@ -1,0 +1,11 @@
+id: T000010
+slug: rest
+title: "Resting-state Task (EC+EO)"
+acquisition: eeg
+variant: baseline
+cognitive_domain: []
+maturity: piloted
+version:
+  release_tag: ""
+evidence: []
+maintainer: []
