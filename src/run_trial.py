@@ -1,11 +1,11 @@
-from psyflow import StimUnit
+﻿from psyflow import StimUnit
 from functools import partial
 
-def run_trial(win, kb, settings, condition, stim_bank, trigger_sender):
+def run_trial(win, kb, settings, condition, stim_bank, trigger_runtime):
 
     trial_data = {"condition": condition}
 
-    make_unit = partial(StimUnit, win=win, kb=kb, triggersender=trigger_sender)
+    make_unit = partial(StimUnit, win=win, kb=kb, runtime=trigger_runtime)
     
     # --- instruction ---
     make_unit(unit_label='inst').add_stim(stim_bank.get(f"{condition}_instruction")) \
@@ -20,3 +20,4 @@ def run_trial(win, kb, settings, condition, stim_bank, trigger_sender):
         .to_dict(trial_data)
 
     return trial_data
+
