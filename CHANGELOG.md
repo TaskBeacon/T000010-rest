@@ -1,0 +1,34 @@
+# CHANGELOG
+
+All notable development changes for T000010-rest are documented here.
+
+## [1.1.0] - 2026-02-17
+
+### Added
+- Added mode-aware `main.py` flow for human/qa/sim execution.
+- Added split runtime configs:
+  - `config/config.yaml`
+  - `config/config_qa.yaml`
+  - `config/config_scripted_sim.yaml`
+  - `config/config_sampler_sim.yaml`
+- Added task-local responder scaffold:
+  - `responders/__init__.py`
+  - `responders/README.md`
+  - `responders/task_sampler.py`
+- Added `outputs/.gitkeep` and standardized output folder handling.
+
+### Changed
+- Refactored `src/run_trial.py` to include responder trial-context plumbing via `set_trial_context(...)`.
+- Added no-response capture window in rest stage using `capture_response(...)` for simulation compatibility.
+- Upgraded trigger config to structured schema (`triggers.map/driver/policy/timing`).
+- Updated `taskbeacon.yaml` to declare contract adoption (`contracts.psyflow_taps: v0.1.0`).
+- Updated `.gitignore` for standardized outputs and QA/sim artifact handling.
+- Updated `README.md` metadata and mode/config usage documentation.
+
+### Fixed
+- No task-logic bug fixes in this alignment release.
+
+### Verified
+- `psyflow-validate <task>` passes contract checks.
+- `psyflow-qa <task> --config config/config_qa.yaml --no-maturity-update` passes.
+- `python main.py sim --config config/config_scripted_sim.yaml` runs and writes sim artifacts.

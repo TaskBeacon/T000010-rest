@@ -1,7 +1,8 @@
 # ============================================================================
-# Base config (human run)
-# - Used by: python main.py
-# - Scope: human experiment only (no qa/sim section in this file)
+# Sampler simulation config
+# - Used by: python main.py sim --config config/config_sampler_sim.yaml
+# - Scope: sampler simulation only (no qa section in this file)
+# - Profile: short smoke run for task-local sampler integration checks
 # ============================================================================
 
 # === Subject Form ===========================================================
@@ -52,13 +53,13 @@ window:
 # === Task ===================================================================
 task:
   task_name: eeg_rest
-  save_path: ./outputs/human
+  save_path: ./outputs/sim_sampler
   language: Chinese
   voice_name: zh-CN-YunyangNeural
-  voice_enabled: true
+  voice_enabled: false
   total_blocks: 1
-  total_trials: 4
-  trial_per_block: 4
+  total_trials: 2
+  trial_per_block: 2
   conditions:
     - EC
     - EO
@@ -84,11 +85,8 @@ stimuli:
     text: |
       【静息态任务说明】
 
-      本任务不涉及任何按键反应。
-      您只需按照指引保持状态即可。
-
-      如果准备好了，
-      请按【空格键】开始任务。
+      Sampler Sim模式：短流程检查。
+      请按【空格键】开始。
     color: white
     pos:
       - 0
@@ -105,12 +103,7 @@ stimuli:
     type: textbox
     text: |
       请您闭上眼睛。
-
-      尽量放松身体，
-      保持头部不动，
-      不要睡着。
-
-      直到听到提示为止。
+      保持静止，直到提示结束。
     color: white
     font: SimHei
     alignment: center
@@ -124,12 +117,7 @@ stimuli:
     type: textbox
     text: |
       请您睁开眼睛。
-
-      注视屏幕中央的注视点，
-      尽量避免眼球和身体移动，
-      不要频繁眨眼。
-
-      直到听到提示为止。
+      注视中央注视点，直到提示结束。
     color: white
     font: SimHei
     alignment: center
@@ -142,9 +130,7 @@ stimuli:
   good_bye:
     type: textbox
     text: |
-      任务结束。
-
-      感谢您的参与。
+      Sampler Sim结束。
       请按【空格键】退出。
     color: white
     font: SimHei
@@ -155,24 +141,10 @@ stimuli:
       - 20
       - 5
 
-  # Pre-recorded voice prompts.
-  general_instruction_voice:
-    type: sound
-    file: assets/general_instruction_voice.mp3
-  EC_instruction_voice:
-    type: sound
-    file: assets/EC_instruction_voice.mp3
-  EO_instruction_voice:
-    type: sound
-    file: assets/EO_instruction_voice.mp3
-  good_bye_voice:
-    type: sound
-    file: assets/good_bye_voice.mp3
-
 # === Timing =================================================================
 timing:
-  EO_duration: 180
-  EC_duration: 180
+  EO_duration: 1.0
+  EC_duration: 1.0
 
 # === Triggers ===============================================================
 triggers:
@@ -202,3 +174,20 @@ triggers:
 
   timing:
     post_delay_s: 0.001
+
+# === Simulation Runtime =====================================================
+sim:
+  output_dir: outputs/sim_sampler
+  seed: 0
+  participant_id: sim001
+  session_id: sub-sim001_task-eeg_rest_sampler_seed0
+  log_path: outputs/sim_sampler/sub-sim001_task-eeg_rest_sampler_seed0_sim_events.jsonl
+  policy: warn
+  default_rt_s: 0.2
+  clamp_rt: false
+  responder:
+    type: responders.task_sampler:TaskSamplerResponder
+    kwargs:
+      continue_key: space
+      rt_continue_s: 0.25
+      p_false_press: 0.02
