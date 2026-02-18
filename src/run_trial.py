@@ -2,7 +2,7 @@ from functools import partial
 
 from psyflow import StimUnit, set_trial_context
 
-# trial stages in contract order: cue -> anticipation -> target -> feedback
+# trial stages use task-specific phase labels via set_trial_context(...)
 _TRIAL_COUNTER = 0
 
 
@@ -40,7 +40,7 @@ def run_trial(
 
     make_unit = partial(StimUnit, win=win, kb=kb, runtime=trigger_runtime)
 
-    # cue
+    # phase: block_instruction
     cue_unit = make_unit(unit_label="cue").add_stim(stim_bank.get(f"{condition_id}_instruction"))
     if bool(getattr(settings, "voice_enabled", True)):
         try:
@@ -51,28 +51,28 @@ def run_trial(
     set_trial_context(
         cue_unit,
         trial_id=trial_id,
-        phase="anticipation",
+        phase="block_instruction",
         deadline_s=None,
         valid_keys=list(getattr(settings, "key_list", []) or []),
         block_id=block_id,
         condition_id=condition_id,
-        task_factors={"condition": condition_id, "stage": "cue", "block_idx": block_idx},
+        task_factors={"condition": condition_id, "stage": "block_instruction", "block_idx": block_idx},
         stim_id=f"{condition_id}_instruction",
     )
     cue_unit.show().to_dict(trial_data)
 
-    # target
+    # phase: rest_state
     target_duration = getattr(settings, f"{condition_id}_duration")
     target_unit = make_unit(unit_label="target").add_stim(stim_bank.get(f"{condition_id}_stim"))
     set_trial_context(
         target_unit,
         trial_id=trial_id,
-        phase="target",
+        phase="rest_state",
         deadline_s=_deadline_s(target_duration),
         valid_keys=[],
         block_id=block_id,
         condition_id=condition_id,
-        task_factors={"condition": condition_id, "stage": "target", "block_idx": block_idx},
+        task_factors={"condition": condition_id, "stage": "rest_state", "block_idx": block_idx},
         stim_id=f"{condition_id}_stim",
     )
     target_unit.capture_response(
@@ -84,6 +84,6 @@ def run_trial(
     )
     target_unit.to_dict(trial_data)
 
-    # feedback (no behavioral feedback in rest; zero-duration closeout stage)
+    # outcome display (no behavioral outcome in rest; zero-duration closeout stage)
     make_unit(unit_label="feedback").show(duration=0.0).to_dict(trial_data)
     return trial_data
