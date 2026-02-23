@@ -1,26 +1,8 @@
 from functools import partial
 
-from psyflow import StimUnit, set_trial_context
+from psyflow import StimUnit, set_trial_context, next_trial_id
 
 # trial stages use task-specific phase labels via set_trial_context(...)
-_TRIAL_COUNTER = 0
-
-
-def _next_trial_id() -> int:
-    global _TRIAL_COUNTER
-    _TRIAL_COUNTER += 1
-    return _TRIAL_COUNTER
-
-
-def _deadline_s(value) -> float | None:
-    if isinstance(value, (int, float)):
-        return float(value)
-    if isinstance(value, (list, tuple)) and value:
-        try:
-            return float(max(value))
-        except Exception:
-            return None
-    return None
 
 
 def run_trial(
@@ -34,7 +16,7 @@ def run_trial(
     block_idx=None,
 ):
     """Run one rest trial (condition-specific instruction + rest window)."""
-    trial_id = _next_trial_id()
+    trial_id = next_trial_id()
     condition_id = str(condition)
     trial_data = {"condition": condition_id}
 
@@ -68,7 +50,7 @@ def run_trial(
         target_unit,
         trial_id=trial_id,
         phase="rest_state",
-        deadline_s=_deadline_s(target_duration),
+        deadline_s=target_duration,
         valid_keys=[],
         block_id=block_id,
         condition_id=condition_id,
