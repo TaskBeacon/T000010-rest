@@ -1,0 +1,12 @@
+# Stimulus Mapping
+
+## Mapping Table
+
+| Condition | Stage/Phase | Stimulus IDs | Participant-Facing Content | Source Paper ID | Evidence (quote/figure/table) | Implementation Mode | Asset References | Notes |
+|---|---|---|---|---|---|---|---|---|
+| `EC` | `block_instruction` | `EC_instruction`, `EC_instruction_voice` | Chinese instruction asking participant to close eyes, stay still, and remain awake until cue ends. | `W2170702893` | Resting-state paradigms require explicit state instruction before each acquisition segment. | `psychopy_builtin` | `config/*.yaml -> stimuli.EC_instruction` | Voice asset is optional (`voice_enabled`). |
+| `EC` | `fixation` | `EC_stim` | Text "请闭眼" shown during eyes-closed rest segment. | `W2122451799` | Resting-state EEG reliability relies on stable state segments with minimal task demands. | `psychopy_builtin` | `config/*.yaml -> stimuli.EC_stim` | No response collection during this window. |
+| `EO` | `block_instruction` | `EO_instruction`, `EO_instruction_voice` | Chinese instruction asking participant to keep eyes open and gaze steadily at center. | `W2030737932` | Eyes-open resting state with controlled alertness/fixation context supports alpha/network comparisons. | `psychopy_builtin` | `config/*.yaml -> stimuli.EO_instruction` | Voice asset is optional (`voice_enabled`). |
+| `EO` | `fixation` | `EO_stim` | Central fixation cross (`+`) during eyes-open rest segment. | `W2030737932` | Fixation-like eyes-open context is used when linking tonic alertness and ongoing oscillatory activity. | `psychopy_builtin` | `config/*.yaml -> stimuli.EO_stim` | No response collection during this window. |
+| `ALL` | `instruction` | `general_instruction`, `general_instruction_voice` | Global task intro: passive task, press space to start. | `W2170702893` | Participant setup/instruction is a required protocol step before resting acquisition blocks. | `psychopy_builtin` | `config/*.yaml -> stimuli.general_instruction` | Localization-ready via config text fields. |
+| `ALL` | `block` | `good_bye`, `good_bye_voice` | End-of-task text prompting space to exit. | `W2170702893` | Post-acquisition termination prompt for clean session completion. | `psychopy_builtin` | `config/*.yaml -> stimuli.good_bye` | Localization-ready via config text fields. |

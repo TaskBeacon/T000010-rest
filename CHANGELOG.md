@@ -7,6 +7,24 @@ All notable development changes for T000010-rest are documented here.
 ### Changed
 - Refactored `src/run_trial.py` to use `psyflow`'s native `next_trial_id()` and removed legacy internal `_next_trial_id` and `_deadline_s` boilerplate.
 
+## [1.2.0] - 2026-03-02
+
+### Added
+- Added required reference artifacts:
+  - `references/references.yaml`
+  - `references/references.md`
+  - `references/parameter_mapping.md`
+  - `references/stimulus_mapping.md`
+  - `references/task_logic_audit.md`
+
+### Changed
+- Refactored `src/run_trial.py` to remove leftover template labels (`cue/target/feedback`) and use task-native trial units (`instruction`, `rest`).
+- Removed zero-duration terminal feedback stage from trial runtime flow.
+- Updated responder context stage naming for rest window to `fixation`.
+- Updated `README.md` to include required configuration subsections and controller logic section.
+- Updated all `config/*.yaml` files with encoding-clean participant-facing Chinese text.
+- Updated `taskbeacon.yaml` metadata (`release_tag`, evidence paths, maintainer block).
+
 ## [1.1.1] - 2026-02-18
 - Refactored responder context phase names in `src/run_trial.py` to task-specific labels (removed generic MID-style phase naming).
 - Updated stage comments in `src/run_trial.py` to phase-aligned labels for cleaner auditability.

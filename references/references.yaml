@@ -1,0 +1,39 @@
+task_id: T000010
+generated_at: '2026-03-02T12:20:00Z'
+selection_policy: focused_resting_state_eeg_open_access_high_citation
+citation_threshold: 100
+papers:
+  - id: W2170702893
+    title: "Tracking Whole-Brain Connectivity Dynamics in the Resting State"
+    year: 2012
+    journal: Cerebral Cortex
+    doi_or_url: https://doi.org/10.1093/cercor/bhs352
+    citation_count: 3142
+    open_access: true
+    is_high_impact: true
+    used_for:
+      - task_workflow
+      - condition_design
+      - resting_state_protocol
+  - id: W2030737932
+    title: "Intrinsic Connectivity Networks, Alpha Oscillations, and Tonic Alertness: A Simultaneous Electroencephalography/Functional Magnetic Resonance Imaging Study"
+    year: 2010
+    journal: Journal of Neuroscience
+    doi_or_url: https://doi.org/10.1523/jneurosci.1004-10.2010
+    citation_count: 513
+    open_access: true
+    is_high_impact: false
+    used_for:
+      - eyes_open_fixation_rationale
+      - eeg_alpha_state_monitoring
+  - id: W2122451799
+    title: "Reliability of Resting-State Microstate Features in Electroencephalography"
+    year: 2014
+    journal: PLoS ONE
+    doi_or_url: https://doi.org/10.1371/journal.pone.0114163
+    citation_count: 245
+    open_access: true
+    is_high_impact: false
+    used_for:
+      - resting_segment_reliability
+      - analysis_reliability_rationale
