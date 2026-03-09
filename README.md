@@ -1,4 +1,4 @@
-﻿# Resting-state Task (EC + EO)
+# Resting-state Task (EC + EO)
 
 ![Maturity: piloted](https://img.shields.io/badge/Maturity-piloted-16a34a?style=flat-square&labelColor=111827)
 
@@ -22,6 +22,8 @@ This task runs one resting-state block with EC/EO conditions in sequence.
 Participants read/listen to instructions and do not provide trial responses during rest windows.
 
 ## 2. Task Flow
+
+![Task flow](./task_flow.png)
 
 ### Block-Level Flow
 
