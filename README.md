@@ -23,7 +23,7 @@ Participants read/listen to instructions and do not provide trial responses duri
 
 ## 2. Task Flow
 
-![Task flow](./task_flow.png)
+![Task Flow](task_flow.png)
 
 ### Block-Level Flow
 
@@ -105,4 +105,3 @@ Participants read/listen to instructions and do not provide trial responses duri
 ## 4. Methods (for academic publication)
 
 This resting-state task presents alternating condition instructions (e.g., eyes-open/eyes-closed) followed by passive rest windows with no active response requirement. Trial context labels separate instruction and rest stages for consistent QA/simulation logging. Timing and trigger events are controlled to support auditable baseline acquisition workflows.
-

@@ -3,7 +3,7 @@ task_plot_spec:
   meta:
     task_name: Resting-state Task (EC + EO)
     mode: existing
-    task_id: ''
+    task_id: T000010
   figure:
     output:
       filename: task_flow.png
@@ -11,8 +11,8 @@ task_plot_spec:
       width_in: 16.0
       background: white
     layout:
-      max_conditions: 4
-      screens_per_timeline: 6
+      max_conditions: 2
+      screens_per_timeline: 4
       screen_overlap_ratio: 0.1
       screen_slope: 0.08
       screen_slope_deg: 25.0
@@ -35,7 +35,7 @@ task_plot_spec:
   - condition: EC
     display_condition_label: EC
     phases:
-    - phase_name: block instruction
+    - phase_name: block_instruction
       display_phase_label: Block Instruction
       duration_ms: null
       response_window_ms: null
@@ -43,35 +43,69 @@ task_plot_spec:
       stim_ids:
       - EC_instruction
       stimulus_example:
-        summary: 请您闭上眼睛。
+        summary: ???????
         modality: visual
-        draw_hint: text
+        draw_hint: image_ref
         render_items:
-        - kind: text
-          text: 请您闭上眼睛。
-          color: white
-          pos: null
-          height: null
-      notes: ''
+        - kind: image_ref
+          path: E:\xhmhc\TaskBeacon\benchmark\runs\task_plot_redo\T000010-rest\references\ec_instruction_text.png
+          label: EC Instruction
+      notes: ????????????????????
     - phase_name: fixation
       display_phase_label: Fixation
+      duration_ms:
+        fixed: 180000
+      response_window_ms:
+        fixed: 180000
+      display_timing_label: 180 s
+      stim_ids:
+      - EC_stim
+      stimulus_example:
+        summary: ???
+        modality: visual
+        draw_hint: image_ref
+        render_items:
+        - kind: image_ref
+          path: E:\xhmhc\TaskBeacon\benchmark\runs\task_plot_redo\T000010-rest\references\ec_rest_text.png
+          label: EC Rest Prompt
+      notes: ???? 180 s???????
+  - condition: EO
+    display_condition_label: EO
+    phases:
+    - phase_name: block_instruction
+      display_phase_label: Block Instruction
       duration_ms: null
       response_window_ms: null
       display_timing_label: ''
       stim_ids:
-      - EC_stim
+      - EO_instruction
       stimulus_example:
-        summary: 请闭眼
+        summary: ???????
+        modality: visual
+        draw_hint: image_ref
+        render_items:
+        - kind: image_ref
+          path: E:\xhmhc\TaskBeacon\benchmark\runs\task_plot_redo\T000010-rest\references\eo_instruction_text.png
+          label: EO Instruction
+      notes: ????????????????????
+    - phase_name: fixation
+      display_phase_label: Fixation
+      duration_ms:
+        fixed: 180000
+      response_window_ms:
+        fixed: 180000
+      display_timing_label: 180 s
+      stim_ids:
+      - EO_stim
+      stimulus_example:
+        summary: +
         modality: visual
         draw_hint: text
         render_items:
         - kind: text
-          text: 请闭眼
+          text: +
           color: black
           pos: null
           height: null
-      notes: ''
-    condition_variants:
-    - EO
-    display_condition_note: 'Also: EO'
+      notes: ???????+? 180 s???????
   legend: []
