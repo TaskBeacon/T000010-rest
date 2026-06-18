@@ -34,14 +34,14 @@ def run_trial(
         instruction_unit,
         trial_id=trial_id,
         phase="block_instruction",
-        deadline_s=None,
+        deadline_s=getattr(settings, "instruction_duration", None),
         valid_keys=list(getattr(settings, "key_list", []) or []),
         block_id=block_id,
         condition_id=condition_id,
         task_factors={"condition": condition_id, "stage": "block_instruction", "block_idx": block_idx},
         stim_id=f"{condition_id}_instruction",
     )
-    instruction_unit.show().to_dict(trial_data)
+    instruction_unit.show(duration=getattr(settings, "instruction_duration", None)).to_dict(trial_data)
 
     # phase: rest window
     rest_duration = getattr(settings, f"{condition_id}_duration")

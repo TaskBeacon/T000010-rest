@@ -81,6 +81,7 @@ Participants read/listen to instructions and do not provide trial responses duri
 
 - Config path: `timing`.
 - Base profile uses `EC_duration=180` and `EO_duration=180`.
+- Condition instruction screens use `instruction_duration=4.0` in the base profile and short QA/sim durations.
 - QA/sim profiles use short durations for smoke execution.
 
 ## Outputs

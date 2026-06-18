@@ -6,6 +6,7 @@ All notable development changes for T000010-rest are documented here.
 
 ### Changed
 - Refactored `src/run_trial.py` to use `psyflow`'s native `next_trial_id()` and removed legacy internal `_next_trial_id` and `_deadline_s` boilerplate.
+- Added config-defined condition instruction duration so instruction screens remain visible when voice prompts are disabled.
 
 ## [1.2.0] - 2026-03-02
 

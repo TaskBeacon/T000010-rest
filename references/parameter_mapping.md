@@ -4,6 +4,7 @@
 
 | Parameter ID | Config Path | Implemented Value | Source Paper ID | Evidence (quote/figure/table) | Decision Type | Notes |
 |---|---|---|---|---|---|---|
+| `instruction_duration` | `timing.instruction_duration` | `4.0` (human), `0.5` (qa/sim) | `W2122451799` | Condition instructions precede each passive rest segment to establish eyes-open or eyes-closed state. | `inferred` | Ensures visual instructions remain visible even when voice prompts are disabled. |
 | `conditions` | `task.conditions` | `['EC', 'EO']` | `W2170702893` | Resting-state protocol variants are treated as distinct acquisition conditions (eyes-open vs eyes-closed style baselines). | `inferred` | Implemented as explicit condition tokens for auditable sequencing. |
 | `trial_per_block` | `task.trial_per_block` | `4` (human), `2` (qa/sim) | `W2122451799` | Reliability work motivates repeated resting segments for stable feature estimates. | `inferred` | QA/sim uses reduced counts for smoke checks only. |
 | `EC_duration` | `timing.EC_duration` | `180` (human), `1.0` (qa/sim) | `W2122451799` | Reliability emphasis supports multi-minute resting segments rather than very short windows. | `inferred` | `180 s` is an implementation decision for practical EEG baseline collection. |

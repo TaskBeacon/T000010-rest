@@ -171,6 +171,7 @@ stimuli:
 
 # === Timing =================================================================
 timing:
+  instruction_duration: 4.0
   EO_duration: 180
   EC_duration: 180
 
