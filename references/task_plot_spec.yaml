@@ -43,14 +43,14 @@ task_plot_spec:
       stim_ids:
       - EC_instruction
       stimulus_example:
-        summary: ???????
+        summary: eyes-closed instruction
         modality: visual
         draw_hint: image_ref
         render_items:
         - kind: image_ref
           path: E:\xhmhc\TaskBeacon\benchmark\runs\task_plot_redo\T000010-rest\references\ec_instruction_text.png
           label: EC Instruction
-      notes: ????????????????????
+      notes: The block instruction explains the required eyes-closed rest posture.
     - phase_name: fixation
       display_phase_label: Fixation
       duration_ms:
@@ -61,14 +61,14 @@ task_plot_spec:
       stim_ids:
       - EC_stim
       stimulus_example:
-        summary: ???
+        summary: eyes closed
         modality: visual
         draw_hint: image_ref
         render_items:
         - kind: image_ref
           path: E:\xhmhc\TaskBeacon\benchmark\runs\task_plot_redo\T000010-rest\references\ec_rest_text.png
           label: EC Rest Prompt
-      notes: ???? 180 s???????
+      notes: The participant rests with eyes closed for 180 s.
   - condition: EO
     display_condition_label: EO
     phases:
@@ -80,14 +80,14 @@ task_plot_spec:
       stim_ids:
       - EO_instruction
       stimulus_example:
-        summary: ???????
+        summary: eyes-open instruction
         modality: visual
         draw_hint: image_ref
         render_items:
         - kind: image_ref
           path: E:\xhmhc\TaskBeacon\benchmark\runs\task_plot_redo\T000010-rest\references\eo_instruction_text.png
           label: EO Instruction
-      notes: ????????????????????
+      notes: The block instruction explains the required eyes-open rest posture.
     - phase_name: fixation
       display_phase_label: Fixation
       duration_ms:
@@ -107,5 +107,5 @@ task_plot_spec:
           color: black
           pos: null
           height: null
-      notes: ???????+? 180 s???????
+      notes: A central fixation cross is shown during the 180 s eyes-open rest period.
   legend: []
